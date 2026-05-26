@@ -15,11 +15,11 @@ title: মহাকল্প — সংগ্রহশালা
           <div class="fi-type">{{ post.data.category }}</div>
           <div class="fi-title">{{ post.data.title }}</div>
           <div class="fi-excerpt">
-            {{ post.data.description | default: "লেখাটি পড়তে ভেতরে প্রবেশ করুন।" }}
+            {{ post.data.description | default: "লেখাটি পড়তে ভেতরে প্রবেশ করুন।" }}
           </div>
         </div>
         <div class="fi-meta" style="font-size: 0.8rem; color: var(--ink-faint);">
-          {{ post.date | date: "%d %b, %Y" }}
+          {{ post.date.toDateString() }}
         </div>
       </a>
     {% else %}
