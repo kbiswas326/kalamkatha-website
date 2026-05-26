@@ -1,0 +1,31 @@
+---
+layout: layouts/base.html
+title: মহাকল্প — সংগ্রহশালা
+---
+
+<section style="padding: 8rem 3rem 4rem; max-width: 900px; margin: 0 auto;">
+  <div class="section-label">সংগ্রহশালা</div>
+  <h2 class="section-title">সমস্ত প্রকাশনা</h2>
+
+  <div class="featured-list">
+    {% for post in collections.posts | reverse %}
+      <a href="{{ post.url }}" class="featured-item" style="text-decoration: none;">
+        <span class="fi-num">০{{ loop.index }}</span>
+        <div class="fi-body">
+          <div class="fi-type">{{ post.data.category }}</div>
+          <div class="fi-title">{{ post.data.title }}</div>
+          <div class="fi-excerpt">
+            {{ post.data.description | default: "লেখাটি পড়তে ভেতরে প্রবেশ করুন।" }}
+          </div>
+        </div>
+        <div class="fi-meta" style="font-size: 0.8rem; color: var(--ink-faint);">
+          {{ post.date | date: "%d %b, %Y" }}
+        </div>
+      </a>
+    {% else %}
+       <div style="text-align: center; color: var(--ink-muted); padding: 4rem 2rem; font-style: italic;">
+         এখানে এখনো কোনো লেখা যুক্ত করা হয়নি। খুব শীঘ্রই আসছে!
+       </div>
+    {% endfor %}
+  </div>
+</section>

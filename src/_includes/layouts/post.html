@@ -1,0 +1,66 @@
+---
+layout: layouts/base.html
+---
+<article style="padding: 8rem 3rem 4rem; max-width: 750px; margin: 0 auto;">
+  
+  <div style="margin-bottom: 2rem;">
+    <a href="/" style="font-size: 0.8rem; color: var(--gold); text-decoration: none; letter-spacing: 0.05em;">← প্রচ্ছদ</a>
+    <span style="color: var(--ink-faint); margin: 0 0.5rem;">/</span>
+    <a href="/archive/" style="font-size: 0.8rem; color: var(--ink-muted); text-decoration: none;">মহাকল্প</a>
+  </div>
+
+  <header style="margin-bottom: 3.5rem;">
+    <div style="font-size: 0.75rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem;">
+      {{ category | default: "সাহিত্য" }}
+    </div>
+    
+    <h1 style="font-family: 'Noto Serif Bengali', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: 1.2rem;">
+      {{ title }}
+    </h1>
+    
+    <div style="font-size: 0.85rem; color: var(--ink-faint); display: flex; gap: 1.5rem; border-bottom: 1px solid var(--parchment-deep); padding-bottom: 1rem;">
+      <span>✍️ {{ site.author.name }}</span>
+      <span>📅 {{ date | date: "%d %b, %Y" }}</span>
+    </div>
+  </header>
+
+  <div class="post-content" style="font-size: 1.1rem; color: var(--ink-soft); line-height: 2.1; font-family: 'Hind Siliguri', sans-serif;">
+    {{ content }}
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 1rem; margin: 4rem auto 2rem; max-width: 300px;">
+    <div style="flex: 1; height: 1px; background: var(--parchment-deep);"></div>
+    <span style="font-family: 'Noto Serif Bengali', serif; color: var(--gold-light); font-size: 1rem;">❧</span>
+    <div style="flex: 1; height: 1px; background: var(--parchment-deep);"></div>
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="/archive/" style="display: inline-block; border: 1px solid var(--ink-muted); color: var(--ink-muted); padding: 0.6rem 1.5rem; font-size: 0.85rem; text-decoration: none; transition: all 0.2s;">
+      সব লেখা একসাথে দেখুন
+    </a>
+  </div>
+</article>
+
+<style>
+  .post-content p {
+    margin-bottom: 1.8rem;
+    text-align: justify;
+  }
+  .post-content h2, .post-content h3 {
+    font-family: 'Noto Serif Bengali', serif;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    font-weight: 600;
+  }
+  .post-content h2 { font-size: 1.6rem; border-bottom: 1px solid var(--parchment-dark); padding-bottom: 0.4rem;}
+  .post-content h3 { font-size: 1.3rem; }
+  .post-content blockquote {
+    border-left: 3px solid var(--gold);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--ink-muted);
+    background: var(--parchment-dark);
+    padding: 1rem 1.5rem;
+  }
+</style>

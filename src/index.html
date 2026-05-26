@@ -1,0 +1,244 @@
+---
+layout: layouts/base.html
+title: শব্দে বোনা স্বপ্নের দুনিয়া
+---
+
+<div class="hero" id="top">
+  
+  <div class="hero-image-full-bg">
+    {% if site.author.portraitImage %}
+      <img src="{{ site.author.portraitImage }}" alt="{{ site.author.name | default: 'Hero Canvas Artwork' }}" />
+    {% else %}
+      <div style="width: 100%; height: 100%; background: var(--parchment-dark);"></div>
+    {% endif %}
+  </div>
+
+  <div class="hero-blend-overlay"></div>
+  
+  <div class="hero-bg-accents"></div>
+  <div class="hero-ornament">ক</div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">কলমকথা — একটি সাহিত্য-জগৎ</div>
+    <h1 class="hero-title">
+      শব্দে বোনা<br><span class="highlight">স্বপ্নের দুনিয়া</span>
+    </h1>
+    <p class="hero-subtitle">— কবিতা, গল্প, উপন্যাস ও চিত্রনাট্য —</p>
+    <p class="hero-desc">
+      এখানে প্রতিটি অক্ষর একটি অনুভূতি, প্রতিটি বাক্য একটি যাত্রা।
+      ছোটগল্প থেকে মহাকাব্য, কবিতা থেকে রুপালি পর্দার গল্প —
+      সব কিছু এক ছাদের নীচে।
+    </p>
+    <div class="hero-tags">
+      <span class="tag">ছোটগল্প</span>
+      <span class="tag">উপন্যাস</span>
+      <span class="tag">কবিতা</span>
+      <span class="tag">চিত্রনাট্য</span>
+      <span class="tag">প্রবন্ধ</span>
+      <span class="tag">অনুবাদ</span>
+    </div>
+    <a class="hero-cta" onclick="scrollToSection('writings')">
+      লেখা পড়তে শুরু করুন <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <div class="scroll-hint" style="z-index: 3;">নিচে</div>
+</div>
+
+<div class="divider"><span class="divider-glyph">❧</span></div>
+
+<section id="writings">
+  <div class="section-label">সমস্ত লেখা</div>
+  <h2 class="section-title">বিভাগ অনুযায়ী</h2>
+  <div class="categories-grid">
+    <div class="category-card">
+      <div class="cat-icon">ছ</div>
+      <div class="cat-title">ছোটগল্প</div>
+      <div class="cat-desc">জীবনের ছোট ছোট মুহূর্তগুলো যখন গল্প হয়ে ওঠে — আনন্দ, বেদনা, বিস্ময়।</div>
+      <div class="cat-count">শীঘ্রই আসছে</div>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="category-card">
+      <div class="cat-icon">উ</div>
+      <div class="cat-title">উপন্যাস</div>
+      <div class="cat-desc">দীর্ঘ আখ্যান, গভীর চরিত্র, এবং এমন এক জগৎ যেখানে হারিয়ে যাওয়া আনন্দ।</div>
+      <div class="cat-count">শীঘ্রই আসছে</div>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="category-card">
+      <div class="cat-icon">ক</div>
+      <div class="cat-title">কবিতা</div>
+      <div class="cat-desc">শব্দের ছন্দে আঁকা অনুভূতির ছবি — গদ্য ও পদ্য উভয় ধারায়।</div>
+      <div class="cat-count">শীঘ্রই আসছে</div>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="category-card">
+      <div class="cat-icon">চ</div>
+      <div class="cat-title">চিত্রনাট্য</div>
+      <div class="cat-desc">রুপালি পর্দার জন্য লেখা — যেখানে গল্প দৃশ্য হয়, সংলাপ প্রাণ পায়।</div>
+      <div class="cat-count">শীঘ্রই আসছে</div>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="category-card">
+      <div class="cat-icon">প্র</div>
+      <div class="cat-title">প্রবন্ধ</div>
+      <div class="cat-desc">সমাজ, সাহিত্য ও জীবন নিয়ে চিন্তাশীল লেখা — বিশ্লেষণ ও অনুভব একসাথে।</div>
+      <div class="cat-count">শীঘ্রই আসছে</div>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="category-card">
+      <div class="cat-icon">অ</div>
+      <div class="cat-title">অন্যান্য</div>
+      <div class="cat-desc">ভ্রমণ কাহিনি, স্মৃতিকথা, অনুবাদ — সাহিত্যের সীমানা পেরিয়ে।</div>
+      <div class="cat-count">শীঘ্রই আসছে</div>
+      <span class="cat-arrow">→</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-glyph">❧</span></div>
+
+<section>
+  <div class="section-label">বাছাই করা</div>
+  <h2 class="section-title">সম্পাদকের পছন্দ</h2>
+  <div class="featured-list">
+    <div class="featured-item">
+      <span class="fi-num">০১</span>
+      <div class="fi-body">
+        <div class="fi-type">ছোটগল্প</div>
+        <div class="fi-title">এখানে আপনার প্রথম গল্পের নাম লিখুন</div>
+        <div class="fi-excerpt">আপনার গল্পের প্রথম কয়েকটি লাইন এখানে দেখাবে — পাঠককে টেনে আনার জন্য।</div>
+      </div>
+      <div class="fi-meta">শীঘ্রই</div>
+    </div>
+    <div class="featured-item">
+      <span class="fi-num">০২</span>
+      <div class="fi-body">
+        <div class="fi-type">কবিতা</div>
+        <div class="fi-title">আপনার প্রথম কবিতার নাম</div>
+        <div class="fi-excerpt">কবিতার প্রথম কয়েকটি চরণ এখানে দেখাবে।</div>
+      </div>
+      <div class="fi-meta">শীঘ্রই</div>
+    </div>
+    <div class="featured-item">
+      <span class="fi-num">০৩</span>
+      <div class="fi-body">
+        <div class="fi-type">চিত্রনাট্য</div>
+        <div class="fi-title">আপনার প্রথম চিত্রনাট্যের নাম</div>
+        <div class="fi-excerpt">চিত্রনাট্যের সারসংক্ষেপ বা একটি দৃশ্যের বিবরণ এখানে।</div>
+      </div>
+      <div class="fi-meta">শীঘ্রই</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-glyph">❧</span></div>
+
+<section id="books">
+  <div class="section-label">প্রকাশনা</div>
+  <h2 class="section-title">বইয়ের তাক</h2>
+  <div class="books-row">
+    <div class="book-card">
+      <div class="book-cover">
+        <div class="book-cover-spine"></div>
+        <div class="book-cover-inner">আপনার<br>প্রথম বই<br>শীঘ্রই</div>
+      </div>
+      <div class="book-title">প্রথম বই</div>
+      <div class="book-genre">উপন্যাস</div>
+    </div>
+    <div class="book-card">
+      <div class="book-cover">
+        <div class="book-cover-spine"></div>
+        <div class="book-cover-inner">কবিতার<br>সংকলন<br>আসছে</div>
+      </div>
+      <div class="book-title">কাব্যগ্রন্থ</div>
+      <div class="book-genre">কবিতা</div>
+    </div>
+    <div class="book-card">
+      <div class="book-cover" style="background: rgba(184,134,11,0.06);">
+        <div class="book-cover-spine" style="background: var(--rust);"></div>
+        <div class="book-cover-inner" style="color: var(--gold);">গল্পের<br>সংকলন</div>
+      </div>
+      <div class="book-title">গল্পসমগ্র</div>
+      <div class="book-genre">ছোটগল্প</div>
+    </div>
+    <div class="book-card">
+      <div class="book-cover" style="border-style: dashed; opacity: 0.5;">
+        <div class="book-cover-inner" style="font-size: 2rem; color: var(--ink-faint);">+</div>
+      </div>
+      <div class="book-genre" style="font-size: 0.75rem; color: var(--ink-faint);">ভবিষ্যতের বই</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-glyph">❧</span></div>
+
+<div style="padding: 0 3rem; max-width: 900px; margin: 0 auto;" id="films">
+  <div class="screenplay-banner">
+    <div class="sb-left">
+      <div class="sb-label">চলচ্চিত্র ও চিত্রনাট্য</div>
+      <div class="sb-title">রুপালি পর্দার<br>স্বপ্নদ্রষ্টা</div>
+      <div class="sb-desc">
+        বাংলা সিনেমা ও ওয়েব সিরিজের জন্য মৌলিক চিত্রনাট্য রচনায় আগ্রহী।
+        প্রযোজক ও পরিচালকদের সাথে সহযোগিতার জন্য যোগাযোগ করুন।
+      </div>
+    </div>
+    <div class="sb-right">
+      <a class="sb-cta" onclick="scrollToSection('contact')">যোগাযোগ করুন →</a>
+    </div>
+  </div>
+</div>
+
+<div style="height: 3rem;"></div>
+<div class="divider"><span class="divider-glyph">❧</span></div>
+
+<section id="about">
+  <div class="section-label">লেখিকা পরিচিতি</div>
+  <h2 class="section-title">কে লিখছেন</h2>
+  <div class="about-layout">
+    <div>
+      <div class="about-portrait">
+        {% if site.author.portraitImage %}
+          <img src="{{ site.author.portraitImage }}" alt="{{ site.author.name }}" />
+        {% else %}
+          <div class="portrait-glyph">লে</div>
+          <span>ছবি যোগ করুন</span>
+        {% endif %}
+      </div>
+    </div>
+    <div class="about-text">
+      <p>{{ site.author.name | default: "আপনার নামটি এখানে লিখুন" }} — বাংলা সাহিত্যের এক উদীয়মান কণ্ঠস্বর।</p>
+      <p>
+        এখানে আপনার পরিচয় লিখুন। আপনি কোথায় বড় হয়েছেন, কী আপনাকে লেখার দিকে টেনেছে,
+        কোন লেখকরা আপনাকে অনুপ্রাণিত করেছেন — সেই গল্পটি পাঠকদের সাথে ভাগ করুন।
+      </p>
+      <p>
+        ছোটগল্প, কবিতা, উপন্যাস ও চিত্রনাট্য — এই চার ধারায় আপনার সৃষ্টিশীলতা প্রবাহিত।
+        বাংলা ভাষা ও সাহিত্যের প্রতি আপনার গভীর ভালোবাসাই এই ওয়েবসাইটের প্রেরণা।
+      </p>
+      <div class="about-roles">
+        <span class="role-tag">ছোটগল্পকার</span>
+        <span class="role-tag">ঔপন্যাসিক</span>
+        <span class="role-tag">কবি</span>
+        <span class="role-tag">চিত্রনাট্যকার</span>
+        <span class="role-tag">প্রবন্ধিক</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-glyph">❧</span></div>
+
+<section id="contact">
+  <div class="newsletter-box">
+    <div class="nl-title">নতুন লেখার খবর পান</div>
+    <p class="nl-desc">
+      প্রতিটি নতুন গল্প, কবিতা বা উপন্যাসের আপডেট সরাসরি আপনার ইনবক্সে।<br>
+      কলমকথার পাঠক হিসেবে যোগ দিন।
+    </p>
+    <div class="nl-form">
+      <input type="email" placeholder="আপনার ইমেইল লিখুন" />
+      <button type="button">সদস্য হন</button>
+    </div>
+  </div>
+</section>

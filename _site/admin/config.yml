@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  branch: main # Change to 'master' if your default branch is named master
+
+media_folder: "src/images"  # Saves uploaded files directly to your updated images directory
+public_folder: "/images"    # Serves them from the root of your compiled live site
+
+collections:
+  # 1. GLOBAL SETTINGS (For managing site name, your author profile picture, etc.)
+  - name: "settings"
+    label: "সাইট সেটিংস (Settings)"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "site_data"
+        label: "ওয়েবসাইট ও লেখক তথ্য"
+        file: "src/_data/site.json" # Maps directly to your data file
+        fields:
+          - { label: "ওয়েবসাইটের নাম (Site Name)", name: "name", widget: "string" }
+          - { label: "লেখকের নাম (Author Name)", name: "author.name", widget: "string" }
+          - { 
+              label: "হোমপেজ ব্যানার ব্যাকগ্রাউন্ড ইমেজ (Hero BG Portrait)", 
+              name: "author.portraitImage", 
+              widget: "image", 
+              required: false 
+            }
+
+  # 2. WRITINGS (For creating new posts)
+  - name: "writings"
+    label: "লেখালেখি (Writings)"
+    folder: "src/writings" # Ensure this folder exists or change it to your posts directory
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "লেআউট (Layout)", name: "layout", widget: "hidden", default: "layouts/base.html" }
+      - { label: "শিরোনাম (Title)", name: "title", widget: "string" }
+      - { label: "তারিখ (Date)", name: "date", widget: "datetime" }
+      - { 
+          label: "বিভাগ (Category)", 
+          name: "category", 
+          widget: "select", 
+          options: ["ছোটগল্প", "উপন্যাস", "কবিতা", "চিত্রনাট্য", "প্রবন্ধ", "অনুবাদ"] 
+        }
+      - { label: "সংক্ষিপ্ত বিবরণ (Excerpt/Subtitle)", name: "excerpt", widget: "text" }
+      - { label: "মূল লেখা (Body Content)", name: "body", widget: "markdown" }
