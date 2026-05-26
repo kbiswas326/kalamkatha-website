@@ -8,7 +8,7 @@ title: মহাকল্প — সংগ্রহশালা
   <h2 class="section-title">সমস্ত প্রকাশনা</h2>
 
   <div class="featured-list">
-    {% for post in collections.posts | reverse %}
+    {% for post in collections.posts %}
       <a href="{{ post.url }}" class="featured-item" style="text-decoration: none;">
         <span class="fi-num">০{{ loop.index }}</span>
         <div class="fi-body">
