@@ -4,7 +4,7 @@
   "description": "Bengali Portfolio Site",
   "main": ".eleventy.js",
   "scripts": {
-    "build": "eleventy",
+    "build": "node node_modules/@11ty/eleventy/cmd.js",
     "serve": "eleventy --serve"
   },
   "dependencies": {
