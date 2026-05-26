@@ -1,1 +1,13 @@
-{  "name": "kalamkatha-site",  "version": "1.0.0",  "description": "Kalamkatha Author Website",  "scripts": {    "start": "eleventy --serve",    "build": "eleventy"  },  "devDependencies": {    "@11ty/eleventy": "^2.0.1"  }} 
+{
+  "name": "kolomkotha",
+  "version": "1.0.0",
+  "description": "Bengali Portfolio Site",
+  "main": ".eleventy.js",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
