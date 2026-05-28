@@ -3,7 +3,7 @@ title: "বৃষ্টিভেজা বিকালের গল্প"
 description: "একটি চায়ের দোকান, কিছু পুরনো স্মৃতি এবং হঠাৎ নেমে আসা শ্রাবণের বৃষ্টি।"
 date: 2026-05-26
 category: "ছোটগল্প"
-layout: layouts/post.html
+layout: post.html
 tags: posts
 ---
 
