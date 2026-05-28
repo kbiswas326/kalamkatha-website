@@ -1,6 +1,10 @@
 module.exports = function(eleventyConfig) {
   
-  // Copy static asset folders straight to the production build output
+  // THE SAFETY NET: Map the old layout name to the new Nunjucks file
+  eleventyConfig.addLayoutAlias('base.html', 'layouts/base.njk');
+  eleventyConfig.addLayoutAlias('layouts/base.html', 'layouts/base.njk');
+
+  // Your static asset copies
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/css");
@@ -13,7 +17,6 @@ module.exports = function(eleventyConfig) {
       layouts: "_includes/layouts",
       data: "_data"
     },
-    // Force Eleventy to parse template files using the Nunjucks layout engine
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
     dataTemplateEngine: "njk"
