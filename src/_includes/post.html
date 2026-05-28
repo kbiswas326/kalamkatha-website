@@ -155,7 +155,7 @@
       <h1 class="article-title">{{ title }}</h1>
       
       <div class="article-meta">
-        <span class="meta-item">📅 {{ date | date: "%d %b, %Y" }}</span>
+        <span class="meta-item">📅 {{ date.toDateString() }}</span>
       </div>
     </header>
 
