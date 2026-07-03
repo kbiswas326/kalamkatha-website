@@ -9,6 +9,34 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/css");
 
+    eleventyConfig.addCollection("stories", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./src/posts/stories/*.md");
+  });
+
+  eleventyConfig.addCollection("poems", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./src/posts/poems/*.md");
+  });
+
+  eleventyConfig.addCollection("novels", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./src/posts/novels/*.md");
+  });
+
+  eleventyConfig.addCollection("essays", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./src/posts/essays/*.md");
+  });
+
+  eleventyConfig.addCollection("screenplays", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./src/posts/screenplays/*.md");
+  });
+
+  eleventyConfig.addCollection("translations", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./src/posts/translations/*.md");
+  });
+
+  eleventyConfig.addCollection("books", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./src/posts/books/*.md");
+  });
+
   return {
     dir: {
       input: "src",

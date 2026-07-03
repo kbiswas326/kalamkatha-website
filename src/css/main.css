@@ -1,0 +1,501 @@
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #1a1208;
+    --ink-soft: #3d3020;
+    --ink-muted: #7a6a52;
+    --ink-faint: #b8a990;
+    --parchment: #faf6ef;
+    --parchment-dark: #f0e9db;
+    --parchment-deep: #e4d9c8;
+    --gold: #b8860b;
+    --gold-light: #d4a843;
+    --rust: #8b3a1a;
+    --sage: #4a6741;
+  }
+
+  body {
+    font-family: 'Hind Siliguri', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,246,239,0.96);
+    border-bottom: 1px solid var(--parchment-deep);
+    padding: 0 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    backdrop-filter: blur(8px);
+  }
+  .nav-logo {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.9rem; color: var(--ink-muted);
+    text-decoration: none; font-weight: 400;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* CINEMATIC FULL-BLEED HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start;
+    padding: 6rem 6rem 4rem;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  /* Image takes whole background frame */
+  .hero-image-full-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .hero-image-full-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 85% center; /* Focuses crop toward right-aligned subject */
+  }
+
+  /* Linear gradient to mesh image into parchment canvas background */
+  .hero-blend-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      var(--parchment) 0%,
+      var(--parchment) 35%,
+      rgba(250, 246, 239, 0.9) 50%,
+      rgba(250, 246, 239, 0.4) 70%,
+      transparent 100%
+    );
+  }
+
+  .hero-bg-accents {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: 
+      radial-gradient(ellipse 50% 50% at 10% 80%, rgba(139,58,26,0.04) 0%, transparent 80%);
+  }
+
+  .hero-ornament {
+    position: absolute;
+    top: 10%;
+    right: 4%;
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 22rem;
+    font-weight: 700;
+    color: rgba(184,134,11,0.03);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+  }
+
+  .hero-content {
+    max-width: 680px;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.2em;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 32px; height: 1px; background: var(--gold);
+  }
+  .hero-title {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    font-weight: 700; line-height: 1.2;
+    color: var(--ink); margin-bottom: 0.5rem;
+  }
+  .hero-title .highlight { color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 1.1rem; font-weight: 300;
+    color: var(--ink-muted); margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+  .hero-desc {
+    font-size: 1rem; color: var(--ink-muted);
+    line-height: 1.9; margin-bottom: 2.5rem;
+    max-width: 680px;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem;
+  }
+  .tag {
+    font-size: 0.78rem;
+    border: 1px solid var(--parchment-deep);
+    color: var(--ink-muted);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2rem;
+    background: rgba(255,255,255,0.5);
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 0.8rem 2rem;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .hero-cta:hover { background: var(--gold); transform: translateY(-1px); }
+  .hero-cta .arrow { font-size: 1rem; transition: transform 0.2s; }
+  .hero-cta:hover .arrow { transform: translateX(4px); }
+
+  /* DIVIDER */
+  .divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0 3rem; margin: 0 auto; max-width: 900px;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--parchment-deep);
+  }
+  .divider-glyph {
+    font-family: 'Noto Serif Bengali', serif;
+    color: var(--gold-light); font-size: 1.2rem;
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 3rem; max-width: 900px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.25em;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 2rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 3rem;
+    position: relative;
+  }
+  .section-title::after {
+    content: ''; position: absolute; bottom: -0.75rem; left: 0;
+    width: 40px; height: 2px; background: var(--gold);
+  }
+
+  /* WRITING CATEGORIES */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--parchment-deep);
+    border: 1px solid var(--parchment-deep);
+  }
+  .category-card {
+    background: var(--parchment);
+    padding: 2rem 1.75rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .category-card:hover { background: #fff; }
+  .category-card:hover .cat-arrow { opacity: 1; transform: translateX(0); }
+  .cat-icon {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 2rem; margin-bottom: 1rem;
+    color: var(--gold);
+  }
+  .cat-title {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.4rem;
+  }
+  .cat-desc { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.7; }
+  .cat-count {
+    font-size: 0.7rem; color: var(--ink-faint);
+    margin-top: 1rem; letter-spacing: 0.1em;
+  }
+  .cat-arrow {
+    position: absolute; bottom: 1.5rem; right: 1.5rem;
+    color: var(--gold); font-size: 1.2rem;
+    opacity: 0; transform: translateX(-4px);
+    transition: all 0.2s;
+  }
+
+  /* FEATURED WORK */
+  .featured-list { display: flex; flex-direction: column; gap: 0; }
+  .featured-item {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--parchment-deep);
+    cursor: pointer;
+    transition: padding-left 0.2s;
+  }
+  .featured-item:hover { padding-left: 0.5rem; }
+  .featured-item:hover .fi-title { color: var(--gold); }
+  .fi-num {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 0.75rem; color: var(--ink-faint);
+    min-width: 24px;
+  }
+  .fi-body { flex: 1; }
+  .fi-type {
+    font-size: 0.7rem; letter-spacing: 0.15em;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+  .fi-title {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 1.15rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.3rem;
+    transition: color 0.2s;
+  }
+  .fi-excerpt {
+    font-size: 0.85rem; color: var(--ink-muted);
+    line-height: 1.7;
+  }
+  .fi-meta {
+    font-size: 0.75rem; color: var(--ink-faint);
+    text-align: right; white-space: nowrap;
+  }
+
+  /* ABOUT */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem; align-items: start;
+  }
+  .about-portrait {
+    width: 100%; aspect-ratio: 3/4;
+    background: var(--parchment-dark);
+    border: 1px solid var(--parchment-deep);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.5rem;
+    color: var(--ink-faint); font-size: 0.8rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .about-portrait img { width: 100%; height: 100%; object-fit: cover; }
+  .about-portrait .portrait-glyph {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 3rem; color: var(--gold-light); opacity: 0.4;
+  }
+  .about-text p {
+    font-size: 0.95rem; color: var(--ink-soft);
+    line-height: 2; margin-bottom: 1.2rem;
+  }
+  .about-text p:first-child {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 1.1rem; font-weight: 400;
+    color: var(--ink);
+  }
+  .about-roles {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem;
+  }
+  .role-tag {
+    font-size: 0.75rem; padding: 0.25rem 0.8rem;
+    background: var(--parchment-dark);
+    border: 1px solid var(--parchment-deep);
+    color: var(--ink-muted);
+  }
+
+  /* FILMS / SCREENPLAY */
+  .screenplay-banner {
+    background: var(--ink);
+    padding: 3rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .sb-left .sb-label {
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .sb-left .sb-title {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--parchment);
+    line-height: 1.3;
+  }
+  .sb-left .sb-desc {
+    font-size: 0.85rem; color: var(--ink-faint);
+    margin-top: 0.75rem; line-height: 1.7; max-width: 400px;
+  }
+  .sb-right .sb-cta {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold); padding: 0.7rem 1.8rem;
+    font-size: 0.85rem; cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .sb-right .sb-cta:hover { background: var(--gold); color: var(--ink); }
+
+  /* BOOKS */
+  .books-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.5rem;
+  }
+  .book-card { cursor: pointer; }
+  .book-cover {
+    width: 100%; aspect-ratio: 2/3;
+    background: var(--parchment-dark);
+    border: 1px solid var(--parchment-deep);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.75rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .book-card:hover .book-cover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(26,18,8,0.12);
+  }
+  .book-cover-inner {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 0.75rem; color: var(--ink-muted);
+    text-align: center; padding: 1rem;
+    line-height: 1.6;
+  }
+  .book-cover-spine {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 6px; background: var(--gold);
+    opacity: 0.5;
+  }
+  .book-title {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 0.85rem; font-weight: 600; color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .book-genre { font-size: 0.72rem; color: var(--ink-faint); }
+
+  /* NEWSLETTER */
+  .newsletter-box {
+    border: 1px solid var(--parchment-deep);
+    padding: 3rem; text-align: center;
+    background: rgba(255,255,255,0.4);
+  }
+  .newsletter-box .nl-title {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 1.5rem; font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .newsletter-box .nl-desc {
+    font-size: 0.9rem; color: var(--ink-muted);
+    margin-bottom: 2rem; line-height: 1.8;
+  }
+  .nl-form { display: flex; gap: 0; max-width: 400px; margin: 0 auto; }
+  .nl-form input {
+    flex: 1; padding: 0.75rem 1rem;
+    border: 1px solid var(--parchment-deep); border-right: none;
+    background: white; font-family: 'Hind Siliguri', sans-serif;
+    font-size: 0.9rem; color: var(--ink); outline: none;
+  }
+  .nl-form input::placeholder { color: var(--ink-faint); }
+  .nl-form button {
+    padding: 0.75rem 1.5rem;
+    background: var(--ink); color: var(--parchment);
+    border: 1px solid var(--ink);
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 0.85rem; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nl-form button:hover { background: var(--gold); border-color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--parchment-deep);
+    padding: 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    max-width: 100%; margin-top: 2rem;
+  }
+  .footer-logo {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 1.2rem; font-weight: 700; color: var(--ink);
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-size: 0.8rem; color: var(--ink-muted);
+    text-decoration: none; cursor: pointer;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.75rem; color: var(--ink-faint); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-title { animation-delay: 0.2s; }
+  .hero-subtitle { animation-delay: 0.3s; }
+  .hero-desc { animation-delay: 0.4s; }
+  .hero-tags { animation-delay: 0.5s; }
+  .hero-cta { animation-delay: 0.6s; }
+
+  /* INDICATOR ANIMATION */
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.1em;
+    animation: fadeUp 1s 1s both;
+  }
+  .scroll-hint::after {
+    content: '';
+    width: 1px; height: 32px; background: var(--ink-faint);
+    animation: scrollLine 2s 1.5s infinite;
+  }
+  @keyframes scrollLine {
+    0% { height: 0; opacity: 1; }
+    100% { height: 32px; opacity: 0; }
+  }
+
+  /* MEDIA QUERIES FOR SCREEN RESPONSIVENESS */
+  @media (max-width: 992px) {
+    .hero {
+      padding: 7rem 3rem 4rem;
+    }
+    .hero-blend-overlay {
+      background: linear-gradient(
+        to bottom,
+        var(--parchment) 0%,
+        rgba(250, 246, 239, 0.95) 45%,
+        rgba(250, 246, 239, 0.7) 75%,
+        rgba(250, 246, 239, 0.2) 100%
+      );
+    }
+    .hero-image-full-bg img {
+      object-position: center center;
+    }
+  }

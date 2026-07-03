@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
-  branch: main # Change to 'master' if your default branch is named master
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME # e.g. bornali/kalamkatha-website
+  branch: main
+  base_url: https://YOUR_SITE_DOMAIN # e.g. https://kalamkatha.pages.dev (no trailing slash)
+  auth_endpoint: api/auth
 
 media_folder: "src/images"  # Saves uploaded files directly to your updated images directory
 public_folder: "/images"    # Serves them from the root of your compiled live site

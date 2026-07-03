@@ -51,49 +51,53 @@ title: শব্দে বোনা স্বপ্নের দুনিয়�
   <div class="section-label">সমস্ত লেখা</div>
   <h2 class="section-title">বিভাগ অনুযায়ী</h2>
   <div class="categories-grid">
-    <div class="category-card">
-      <div class="cat-icon">ছ</div>
-      <div class="cat-title">ছোটগল্প</div>
-      <div class="cat-desc">জীবনের ছোট ছোট মুহূর্তগুলো যখন গল্প হয়ে ওঠে — আনন্দ, বেদনা, বিস্ময়।</div>
-      <div class="cat-count">শীঘ্রই আসছে</div>
-      <span class="cat-arrow">→</span>
+
+{% for category in categories %}
+
+<div class="category-card">
+
+    <div class="cat-icon">
+        {{ category.icon }}
     </div>
-    <div class="category-card">
-      <div class="cat-icon">উ</div>
-      <div class="cat-title">উপন্যাস</div>
-      <div class="cat-desc">দীর্ঘ আখ্যান, গভীর চরিত্র, এবং এমন এক জগৎ যেখানে হারিয়ে যাওয়া আনন্দ।</div>
-      <div class="cat-count">শীঘ্রই আসছে</div>
-      <span class="cat-arrow">→</span>
+
+    <div class="cat-title">
+        {{ category.title }}
     </div>
-    <div class="category-card">
-      <div class="cat-icon">ক</div>
-      <div class="cat-title">কবিতা</div>
-      <div class="cat-desc">শব্দের ছন্দে আঁকা অনুভূতির ছবি — গদ্য ও পদ্য উভয় ধারায়।</div>
-      <div class="cat-count">শীঘ্রই আসছে</div>
-      <span class="cat-arrow">→</span>
+
+    <div class="cat-desc">
+        {{ category.description }}
     </div>
-    <div class="category-card">
-      <div class="cat-icon">চ</div>
-      <div class="cat-title">চিত্রনাট্য</div>
-      <div class="cat-desc">রুপালি পর্দার জন্য লেখা — যেখানে গল্প দৃশ্য হয়, সংলাপ প্রাণ পায়।</div>
-      <div class="cat-count">শীঘ্রই আসছে</div>
-      <span class="cat-arrow">→</span>
+
+    <div class="cat-count">
+
+        {% if category.id == "stories" %}
+            {{ collections.stories | length }} লেখা
+
+        {% elseif category.id == "novels" %}
+            {{ collections.novels | length }} লেখা
+
+        {% elseif category.id == "poems" %}
+            {{ collections.poems | length }} লেখা
+
+        {% elseif category.id == "screenplays" %}
+            {{ collections.screenplays | length }} লেখা
+
+        {% elseif category.id == "essays" %}
+            {{ collections.essays | length }} লেখা
+
+        {% elseif category.id == "translations" %}
+            {{ collections.translations | length }} লেখা
+        {% endif %}
+
     </div>
-    <div class="category-card">
-      <div class="cat-icon">প্র</div>
-      <div class="cat-title">প্রবন্ধ</div>
-      <div class="cat-desc">সমাজ, সাহিত্য ও জীবন নিয়ে চিন্তাশীল লেখা — বিশ্লেষণ ও অনুভব একসাথে।</div>
-      <div class="cat-count">শীঘ্রই আসছে</div>
-      <span class="cat-arrow">→</span>
-    </div>
-    <div class="category-card">
-      <div class="cat-icon">অ</div>
-      <div class="cat-title">অন্যান্য</div>
-      <div class="cat-desc">ভ্রমণ কাহিনি, স্মৃতিকথা, অনুবাদ — সাহিত্যের সীমানা পেরিয়ে।</div>
-      <div class="cat-count">শীঘ্রই আসছে</div>
-      <span class="cat-arrow">→</span>
-    </div>
-  </div>
+
+    <span class="cat-arrow">→</span>
+
+</div>
+
+{% endfor %}
+
+</div>
 </section>
 
 <div class="divider"><span class="divider-glyph">❧</span></div>

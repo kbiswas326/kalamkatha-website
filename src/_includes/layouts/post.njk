@@ -1,0 +1,185 @@
+---
+layout: base.njk
+---
+
+<section class="post-hero">
+
+    <div class="post-breadcrumb">
+        <a href="/">কলমকথা</a>
+
+        {% if category %}
+        <span>—</span>
+        <span>{{ category }}</span>
+        {% endif %}
+    </div>
+
+    {% if category %}
+    <div class="post-category">
+        {{ category }}
+    </div>
+    {% endif %}
+
+    <h1 class="post-title">
+        {{ title }}
+    </h1>
+
+    {% if subtitle %}
+    <p class="post-subtitle">
+        {{ subtitle }}
+    </p>
+    {% endif %}
+
+    <div class="post-meta">
+
+        <span>
+            📅 {{ date }}
+        </span>
+
+        {% if readingTime %}
+        <span>•</span>
+        <span>{{ readingTime }} মিনিট পড়তে</span>
+        {% endif %}
+
+        {% if author %}
+        <span>•</span>
+        <span>{{ author }}</span>
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<div class="post-divider">
+
+    <span>❦</span>
+
+</div>
+
+
+{% if cover %}
+
+<section class="post-feature">
+
+    <figure class="post-feature-image">
+
+        <img
+            src="{{ cover }}"
+            alt="{{ title }}"
+            loading="lazy"
+        >
+
+        {% if imageCaption %}
+        <figcaption>
+
+            {{ imageCaption }}
+
+        </figcaption>
+        {% endif %}
+
+    </figure>
+
+</section>
+
+{% endif %}
+
+
+
+<section class="post-main">
+
+    <aside class="post-sidebar">
+
+        <div class="sidebar-group">
+
+            <div class="sidebar-title">
+                লেখক
+            </div>
+
+            <strong>
+
+                {{ author or "কলমকথা" }}
+
+            </strong>
+
+        </div>
+
+        {% if category %}
+
+        <div class="sidebar-group">
+
+            <div class="sidebar-title">
+
+                বিভাগ
+
+            </div>
+
+            <strong>
+
+                {{ category }}
+
+            </strong>
+
+        </div>
+
+        {% endif %}
+
+
+        {% if tags %}
+
+        <div class="sidebar-group">
+
+            <div class="sidebar-title">
+
+                ট্যাগ
+
+            </div>
+
+            <div class="tag-list">
+
+                {% for tag in tags %}
+
+                <span class="tag">
+
+                    {{ tag }}
+
+                </span>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </aside>
+
+
+
+    <article class="post-content">
+
+        {{ content | safe }}
+
+    </article>
+
+</section>
+
+
+
+<div class="post-divider">
+
+    <span>❦</span>
+
+</div>
+
+
+
+<nav class="post-navigation">
+
+    <a href="/archive/">
+
+        ← সমস্ত লেখা
+
+    </a>
+
+</nav>
