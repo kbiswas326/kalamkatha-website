@@ -37,6 +37,37 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("./src/posts/books/*.md");
   });
 
+    // Featured posts (homepage)
+  eleventyConfig.addCollection("featured", function(collectionApi) {
+    return collectionApi
+      .getAllSorted()
+      .filter(item => item.data.featured);
+  });
+
+  // Latest writings (excluding books)
+eleventyConfig.addCollection("latest", function(collectionApi) {
+
+  return collectionApi
+    .getAllSorted()
+    .filter(item => {
+
+      return (
+        item.inputPath.includes("/posts/") &&
+        !item.inputPath.includes("/posts/books/")
+      );
+
+    })
+    .reverse();
+
+});
+
+  // Latest books
+  eleventyConfig.addCollection("latestBooks", function(collectionApi) {
+    return collectionApi
+      .getFilteredByGlob("./src/posts/books/*.md")
+      .reverse();
+  });
+
   return {
     dir: {
       input: "src",

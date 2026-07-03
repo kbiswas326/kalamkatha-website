@@ -44,7 +44,7 @@ title: শব্দে বোনা স্বপ্নের দুনিয়�
 
   <div class="scroll-hint" style="z-index: 3;">নিচে</div>
 </div>
-
+/// first section/// 
 <div class="divider"><span class="divider-glyph">❧</span></div>
 
 <section id="writings">
@@ -54,126 +54,235 @@ title: শব্দে বোনা স্বপ্নের দুনিয়�
 
 {% for category in categories %}
 
-<div class="category-card">
+<a href="/{{ category.id }}/" class="category-card">
 
     <div class="cat-icon">
+
         {{ category.icon }}
+
     </div>
 
     <div class="cat-title">
+
         {{ category.title }}
+
     </div>
 
     <div class="cat-desc">
+
         {{ category.description }}
+
     </div>
+
+    {% set posts = collections[category.id] %}
 
     <div class="cat-count">
 
-        {% if category.id == "stories" %}
-            {{ collections.stories | length }} লেখা
-
-        {% elseif category.id == "novels" %}
-            {{ collections.novels | length }} লেখা
-
-        {% elseif category.id == "poems" %}
-            {{ collections.poems | length }} লেখা
-
-        {% elseif category.id == "screenplays" %}
-            {{ collections.screenplays | length }} লেখা
-
-        {% elseif category.id == "essays" %}
-            {{ collections.essays | length }} লেখা
-
-        {% elseif category.id == "translations" %}
-            {{ collections.translations | length }} লেখা
-        {% endif %}
+        {{ posts | length }} লেখা
 
     </div>
 
-    <span class="cat-arrow">→</span>
+    {% if posts.length %}
 
-</div>
+    <div class="cat-latest">
+
+        <small>সর্বশেষ</small>
+
+        <strong>
+
+            {{ posts | last | attr("data") | attr("title") }}
+
+        </strong>
+
+    </div>
+
+    {% endif %}
+
+    <span class="cat-arrow">
+
+        →
+
+    </span>
+
+</a>
 
 {% endfor %}
 
 </div>
 </section>
 
+/// second section ///
+
 <div class="divider"><span class="divider-glyph">❧</span></div>
 
 <section>
-  <div class="section-label">বাছাই করা</div>
-  <h2 class="section-title">সম্পাদকের পছন্দ</h2>
-  <div class="featured-list">
-    <div class="featured-item">
-      <span class="fi-num">০১</span>
-      <div class="fi-body">
-        <div class="fi-type">ছোটগল্প</div>
-        <div class="fi-title">এখানে আপনার প্রথম গল্পের নাম লিখুন</div>
-        <div class="fi-excerpt">আপনার গল্পের প্রথম কয়েকটি লাইন এখানে দেখাবে — পাঠককে টেনে আনার জন্য।</div>
-      </div>
-      <div class="fi-meta">শীঘ্রই</div>
+
+<div class="section-label">
+বাছাই করা
+</div>
+
+<h2 class="section-title">
+সম্পাদকের পছন্দ
+</h2>
+
+<div class="featured-list">
+
+{% for post in collections.featured %}
+
+<a href="{{ post.url }}" class="featured-item">
+
+    <span class="fi-num">
+
+        {{ "%02d"|format(loop.index) }}
+
+    </span>
+
+    <div class="fi-body">
+
+        <div class="fi-type">
+
+            {{ post.data.category }}
+
+        </div>
+
+        <div class="fi-title">
+
+            {{ post.data.title }}
+
+        </div>
+
+        <div class="fi-excerpt">
+
+            {{ post.data.excerpt }}
+
+        </div>
+
     </div>
-    <div class="featured-item">
-      <span class="fi-num">০২</span>
-      <div class="fi-body">
-        <div class="fi-type">কবিতা</div>
-        <div class="fi-title">আপনার প্রথম কবিতার নাম</div>
-        <div class="fi-excerpt">কবিতার প্রথম কয়েকটি চরণ এখানে দেখাবে।</div>
-      </div>
-      <div class="fi-meta">শীঘ্রই</div>
+
+    <div class="fi-meta">
+
+        {{ post.data.author }}
+
     </div>
-    <div class="featured-item">
-      <span class="fi-num">০৩</span>
-      <div class="fi-body">
-        <div class="fi-type">চিত্রনাট্য</div>
-        <div class="fi-title">আপনার প্রথম চিত্রনাট্যের নাম</div>
-        <div class="fi-excerpt">চিত্রনাট্যের সারসংক্ষেপ বা একটি দৃশ্যের বিবরণ এখানে।</div>
-      </div>
-      <div class="fi-meta">শীঘ্রই</div>
-    </div>
-  </div>
+
+</a>
+
+{% endfor %}
+
+</div>
+
 </section>
+
+/// third section ///
 
 <div class="divider"><span class="divider-glyph">❧</span></div>
 
 <section id="books">
   <div class="section-label">প্রকাশনা</div>
   <h2 class="section-title">বইয়ের তাক</h2>
-  <div class="books-row">
-    <div class="book-card">
-      <div class="book-cover">
-        <div class="book-cover-spine"></div>
-        <div class="book-cover-inner">আপনার<br>প্রথম বই<br>শীঘ্রই</div>
-      </div>
-      <div class="book-title">প্রথম বই</div>
-      <div class="book-genre">উপন্যাস</div>
+ <div class="books-row">
+
+{% for book in collections.latestBooks %}
+
+<a href="{{ book.url }}" class="book-card">
+
+    <div class="book-cover">
+
+        {% if book.data.cover %}
+
+        <img
+            src="{{ book.data.cover }}"
+            alt="{{ book.data.title }}"
+        >
+
+        {% endif %}
+
     </div>
-    <div class="book-card">
-      <div class="book-cover">
-        <div class="book-cover-spine"></div>
-        <div class="book-cover-inner">কবিতার<br>সংকলন<br>আসছে</div>
-      </div>
-      <div class="book-title">কাব্যগ্রন্থ</div>
-      <div class="book-genre">কবিতা</div>
+
+    <div class="book-title">
+
+        {{ book.data.title }}
+
     </div>
-    <div class="book-card">
-      <div class="book-cover" style="background: rgba(184,134,11,0.06);">
-        <div class="book-cover-spine" style="background: var(--rust);"></div>
-        <div class="book-cover-inner" style="color: var(--gold);">গল্পের<br>সংকলন</div>
-      </div>
-      <div class="book-title">গল্পসমগ্র</div>
-      <div class="book-genre">ছোটগল্প</div>
+
+    <div class="book-genre">
+
+        {{ book.data.category }}
+
     </div>
-    <div class="book-card">
-      <div class="book-cover" style="border-style: dashed; opacity: 0.5;">
-        <div class="book-cover-inner" style="font-size: 2rem; color: var(--ink-faint);">+</div>
-      </div>
-      <div class="book-genre" style="font-size: 0.75rem; color: var(--ink-faint);">ভবিষ্যতের বই</div>
-    </div>
-  </div>
+
+</a>
+
+{% endfor %}
+
+</div>
 </section>
+
+/// fourth section ///
+
+<div class="divider">
+    <span class="divider-glyph">❧</span>
+</div>
+
+<section id="latest">
+
+    <div class="section-label">
+        সাম্প্রতিক
+    </div>
+
+    <h2 class="section-title">
+        সর্বশেষ লেখা
+    </h2>
+
+    <div class="featured-list">
+
+        {% for post in collections.latest | slice(0,6) %}
+
+        <a href="{{ post.url }}" class="featured-item">
+
+            <span class="fi-num">
+
+                {{ "%02d"|format(loop.index) }}
+
+            </span>
+
+            <div class="fi-body">
+
+                <div class="fi-type">
+
+                    {{ post.data.category }}
+
+                </div>
+
+                <div class="fi-title">
+
+                    {{ post.data.title }}
+
+                </div>
+
+                <div class="fi-excerpt">
+
+                    {{ post.data.excerpt }}
+
+                </div>
+
+            </div>
+
+            <div class="fi-meta">
+
+                {{ post.data.author }}
+
+            </div>
+
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+/// fifth section ///
 
 <div class="divider"><span class="divider-glyph">❧</span></div>
 
