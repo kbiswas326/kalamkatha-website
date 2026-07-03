@@ -1,8 +1,8 @@
 module.exports = function(eleventyConfig) {
   
   // THE SAFETY NET: Map the old layout name to the new Nunjucks file
-  eleventyConfig.addLayoutAlias('base.html', 'layouts/base.njk');
-  eleventyConfig.addLayoutAlias('layouts/base.html', 'layouts/base.njk');
+  eleventyConfig.addLayoutAlias('base.html', 'base.njk');
+  eleventyConfig.addLayoutAlias('layouts/base.html', 'base.njk');
 
   // Your static asset copies
   eleventyConfig.addPassthroughCopy("src/admin");

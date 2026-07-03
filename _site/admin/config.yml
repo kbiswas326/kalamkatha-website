@@ -35,7 +35,7 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "লেআউট (Layout)", name: "layout", widget: "hidden", default: "layouts/base.html" }
+      - { label: "লেআউট (Layout)", name: "layout", widget: "hidden", default: "layouts/base.njk" }
       - { label: "শিরোনাম (Title)", name: "title", widget: "string" }
       - { label: "তারিখ (Date)", name: "date", widget: "datetime" }
       - { 
