@@ -5,8 +5,13 @@ backend:
   base_url: https://kalamkatha-website.pages.dev
   auth_endpoint: api/auth
 
-media_folder: "src/images"  # Saves uploaded files directly to your updated images directory
-public_folder: "/images"    # Serves them from the root of your compiled live site
+media_folder: "src/images"
+public_folder: "/images"
+
+media_library:
+  name: default
+
+publish_mode: simple
 
 collections:
 
@@ -156,7 +161,7 @@ collections:
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
 
-      - { label: "Feature Image", name: "feature", widget: "image", required: false }
+      - { label: "Feature Image", name: "feature", widget: "image", media_folder: "posts", public_folder: "/images/posts", required: false }
 
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
 
@@ -183,7 +188,7 @@ collections:
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
 
-      - { label: "Cover Image", name: "cover", widget: "image", required: false }
+      - { label: "Cover Image", name: "cover", widget: "image", media_folder: "books", public_folder: "/images/books", required: false }
 
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
 
