@@ -23,6 +23,13 @@
     overflow-x: hidden;
   }
 
+  /* GLOBAL LINKS */
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -220,12 +227,16 @@
     border: 1px solid var(--parchment-deep);
   }
   .category-card {
+    display: block;
     background: var(--parchment);
+    color: inherit;
+    text-decoration: none;
     padding: 2rem 1.75rem;
     cursor: pointer;
     transition: background 0.2s;
-    position: relative; overflow: hidden;
-  }
+    position: relative;
+    overflow: hidden;
+}
   .category-card:hover { background: #fff; }
   .category-card:hover .cat-arrow { opacity: 1; transform: translateX(0); }
   .cat-icon {
@@ -243,6 +254,45 @@
     font-size: 0.7rem; color: var(--ink-faint);
     margin-top: 1rem; letter-spacing: 0.1em;
   }
+  .cat-latest{
+
+    margin-top:1rem;
+
+    padding-top:1rem;
+
+    border-top:1px solid var(--parchment-deep);
+
+}
+
+.cat-latest small{
+
+    display:block;
+
+    font-size:.7rem;
+
+    letter-spacing:.08em;
+
+    color:var(--ink-faint);
+
+    margin-bottom:.35rem;
+
+    text-transform:uppercase;
+
+}
+
+.cat-latest strong{
+
+    display:block;
+
+    font-family:'Noto Serif Bengali',serif;
+
+    font-size:.95rem;
+
+    line-height:1.5;
+
+    color:var(--ink);
+
+}
   .cat-arrow {
     position: absolute; bottom: 1.5rem; right: 1.5rem;
     color: var(--gold); font-size: 1.2rem;
@@ -253,12 +303,16 @@
   /* FEATURED WORK */
   .featured-list { display: flex; flex-direction: column; gap: 0; }
   .featured-item {
-    display: flex; align-items: baseline; gap: 1.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
     padding: 1.5rem 0;
     border-bottom: 1px solid var(--parchment-deep);
     cursor: pointer;
     transition: padding-left 0.2s;
-  }
+    color: inherit;
+    text-decoration: none;
+}
   .featured-item:hover { padding-left: 0.5rem; }
   .featured-item:hover .fi-title { color: var(--gold); }
   .fi-num {
@@ -363,7 +417,12 @@
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 1.5rem;
   }
-  .book-card { cursor: pointer; }
+  .book-card {
+    display: block;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
   .book-cover {
     width: 100%; aspect-ratio: 2/3;
     background: var(--parchment-dark);
