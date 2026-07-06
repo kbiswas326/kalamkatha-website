@@ -9,43 +9,184 @@ media_folder: "src/images"  # Saves uploaded files directly to your updated imag
 public_folder: "/images"    # Serves them from the root of your compiled live site
 
 collections:
-  # 1. GLOBAL SETTINGS (For managing site name, your author profile picture, etc.)
+
+  # ----------------------------
+  # SETTINGS
+  # ----------------------------
   - name: "settings"
-    label: "সাইট সেটিংস (Settings)"
+    label: "⚙️ Settings"
     delete: false
     editor:
       preview: false
     files:
       - name: "site_data"
-        label: "ওয়েবসাইট ও লেখক তথ্য"
-        file: "src/_data/site.json" # Maps directly to your data file
+        label: "Website"
+        file: "src/_data/site.json"
         fields:
-          - { label: "ওয়েবসাইটের নাম (Site Name)", name: "name", widget: "string" }
-          - { label: "লেখকের নাম (Author Name)", name: "author.name", widget: "string" }
-          - { 
-              label: "হোমপেজ ব্যানার ব্যাকগ্রাউন্ড ইমেজ (Hero BG Portrait)", 
-              name: "author.portraitImage", 
-              widget: "image", 
-              required: false 
-            }
+          - { label: "Site Name", name: "name", widget: "string" }
+          - { label: "Author", name: "author.name", widget: "string", default: "বর্ণালী দেবনাথ" }
+          - { label: "Author Portrait", name: "author.portraitImage", widget: "image", required: false }
 
-  # 2. WRITINGS (For creating new posts)
-  - name: "writings"
-    label: "লেখালেখি (Writings)"
-    folder: "src/writings" # Ensure this folder exists or change it to your posts directory
+  # ----------------------------
+  # STORIES
+  # ----------------------------
+  - name: "stories"
+    label: "✍️ ছোটগল্প"
+    folder: "src/posts/stories"
     create: true
     slug: "{{slug}}"
+    extension: "md"
     editor:
       preview: false
+
     fields:
-      - { label: "লেআউট (Layout)", name: "layout", widget: "hidden", default: "layouts/base.njk" }
-      - { label: "শিরোনাম (Title)", name: "title", widget: "string" }
-      - { label: "তারিখ (Date)", name: "date", widget: "datetime" }
-      - { 
-          label: "বিভাগ (Category)", 
-          name: "category", 
-          widget: "select", 
-          options: ["ছোটগল্প", "উপন্যাস", "কবিতা", "চিত্রনাট্য", "প্রবন্ধ", "অনুবাদ"] 
-        }
-      - { label: "সংক্ষিপ্ত বিবরণ (Excerpt/Subtitle)", name: "excerpt", widget: "text" }
-      - { label: "মূল লেখা (Body Content)", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }
+      - { label: "Category", name: "category", widget: "hidden", default: "ছোটগল্প" }
+      - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
+
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+
+      - { label: "Feature Image", name: "feature", widget: "image", required: false }
+
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
+
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ----------------------------
+  # NOVELS
+  # ----------------------------
+  - name: "novels"
+    label: "📖 উপন্যাস"
+    folder: "src/posts/novels"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }
+      - { label: "Category", name: "category", widget: "hidden", default: "উপন্যাস" }
+      - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
+
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+
+      - { label: "Feature Image", name: "feature", widget: "image", required: false }
+
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
+
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ----------------------------
+  # POEMS
+  # ----------------------------
+  - name: "poems"
+    label: "📝 কবিতা"
+    folder: "src/posts/poems"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }
+      - { label: "Category", name: "category", widget: "hidden", default: "কবিতা" }
+      - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
+
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+
+      - { label: "Feature Image", name: "feature", widget: "image", required: false }
+
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
+
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ----------------------------
+  # SCREENPLAYS
+  # ----------------------------
+  - name: "screenplays"
+    label: "🎬 চিত্রনাট্য"
+    folder: "src/posts/screenplays"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }
+      - { label: "Category", name: "category", widget: "hidden", default: "চিত্রনাট্য" }
+      - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
+
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+
+      - { label: "Feature Image", name: "feature", widget: "image", required: false }
+
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
+
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ----------------------------
+  # ESSAYS
+  # ----------------------------
+  - name: "essays"
+    label: "📜 প্রবন্ধ"
+    folder: "src/posts/essays"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }
+      - { label: "Category", name: "category", widget: "hidden", default: "প্রবন্ধ" }
+      - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
+
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+
+      - { label: "Feature Image", name: "feature", widget: "image", required: false }
+
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
+
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ----------------------------
+  # BOOKS
+  # ----------------------------
+  - name: "books"
+    label: "📚 বই"
+    folder: "src/posts/books"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }
+      - { label: "Category", name: "category", widget: "hidden", default: "বই" }
+      - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
+
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+
+      - { label: "Cover Image", name: "cover", widget: "image", required: false }
+
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
+
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+
+      - { label: "Body", name: "body", widget: "markdown" }
