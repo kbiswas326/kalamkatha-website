@@ -39,14 +39,16 @@ module.exports = [
     description: "চিন্তা, সমাজ ও সাহিত্য।",
     hero: true
   },
-  {
-    id: "translations",
-    title: "অনুবাদ",
-    short: "অনুবাদ",
-    icon: "অ",
-    description: "বিশ্বসাহিত্য বাংলায়।",
-    hero: true
-  },
+ /*
+{
+  id: "translations",
+  title: "অনুবাদ",
+  short: "অনুবাদ",
+  icon: "অ",
+  description: "বিশ্বসাহিত্য বাংলায়।",
+  hero: true
+},
+*/
   {
     id: "books",
     title: "বই",
