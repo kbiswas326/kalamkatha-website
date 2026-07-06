@@ -59,27 +59,23 @@ layout: base.njk
 
 {% if cover %}
 
-<section class="post-feature">
+{% if feature %}
 
-    <figure class="post-feature-image">
+<figure class="post-feature">
 
-        <img
-            src="{{ cover }}"
-            alt="{{ title }}"
-            loading="lazy"
-        >
+    <div class="post-feature-image">
 
-        {% if imageCaption %}
-        <figcaption>
+        <img src="{{ feature }}" alt="{{ title }}">
 
-            {{ imageCaption }}
+    </div>
 
-        </figcaption>
-        {% endif %}
+</figure>
 
-    </figure>
+<div class="post-divider">
+    <span>❧</span>
+</div>
 
-</section>
+{% endif %}
 
 {% endif %}
 

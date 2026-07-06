@@ -5,6 +5,7 @@ category: ছোটগল্প
 author: বর্ণালী দেবনাথ
 date: 2026-07-01
 cover: /images/author.webp
+feature: /images/posts/nodir-opare.jpg
 featured: true
 excerpt: নদীর ওপারের মানুষেরা যেন অন্য এক সময়ে বাস করে—এই গল্প সেই দূরত্বের।
 tags:
