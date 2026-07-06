@@ -57,8 +57,6 @@ layout: base.njk
 </div>
 
 
-{% if cover %}
-
 {% if feature %}
 
 <figure class="post-feature">
@@ -76,6 +74,22 @@ layout: base.njk
 </div>
 
 {% endif %}
+
+{% if cover %}
+
+<figure class="post-feature">
+
+    <div class="post-feature-image">
+
+        <img src="{{ cover }}" alt="{{ title }}">
+
+    </div>
+
+</figure>
+
+<div class="post-divider">
+    <span>❧</span>
+</div>
 
 {% endif %}
 
