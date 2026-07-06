@@ -3,25 +3,60 @@ layout: base.njk
 title: মহাকল্প — সংগ্রহশালা
 ---
 
-<section style="padding: 8rem 3rem 4rem; max-width: 900px; margin: 0 auto;">
-  <div class="section-label">সংগ্রহশালা</div>
-  <h2 class="section-title">সমস্ত প্রকাশনা</h2>
+<section style="padding:8rem 3rem 4rem;max-width:900px;margin:0 auto;">
 
-  <div class="featured-list">
-    {% for post in collections.posts %}
-      <a href="{{ post.url }}" class="featured-item" style="text-decoration: none;">
-        <span class="fi-num">০{{ loop.index }}</span>
-        <div class="fi-body">
-          <div class="fi-type">{{ post.data.category }}</div>
-          <div class="fi-title">{{ post.data.title }}</div>
-          <div class="fi-excerpt">
-            {{ post.data.description | default("লেখাটি পড়তে ভেতরে প্রবেশ করুন।") }}
-          </div>
-        </div>
-        <div class="fi-meta" style="font-size: 0.8rem; color: var(--ink-faint);">
-          {{ post.date }}
-        </div>
-      </a>
-    {% endfor %}
-  </div>
+    <div class="section-label">
+        সংগ্রহশালা
+    </div>
+
+    <h2 class="section-title">
+        সমস্ত প্রকাশনা
+    </h2>
+
+    <div class="featured-list">
+
+        {% for post in collections.latest %}
+
+        <a href="{{ post.url }}" class="featured-item">
+
+            <span class="fi-num">
+
+                {{ loop.index }}
+
+            </span>
+
+            <div class="fi-body">
+
+                <div class="fi-type">
+
+                    {{ post.data.category }}
+
+                </div>
+
+                <div class="fi-title">
+
+                    {{ post.data.title }}
+
+                </div>
+
+                <div class="fi-excerpt">
+
+                    {{ post.data.excerpt }}
+
+                </div>
+
+            </div>
+
+            <div class="fi-meta">
+
+                {{ post.data.author }}
+
+            </div>
+
+        </a>
+
+        {% endfor %}
+
+    </div>
+
 </section>
