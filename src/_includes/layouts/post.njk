@@ -95,35 +95,39 @@ layout: base.njk
 </div>
 
 <section class="related-posts">
-
-    <h2>আরও পড়ুন</h2>
-
-    <div class="related-grid">
-
-        {% for post in collections.latest | reverse %}
-
-            {% if post.url != page.url %}
-
-            <article class="related-card">
-
-                <a href="{{ post.url }}">
-
-                    {% if post.data.feature %}
-                    <img src="{{ post.data.feature }}" alt="{{ post.data.title }}">
-                    {% endif %}
-
-                    <h3>{{ post.data.title }}</h3>
-
-                    <p>{{ post.data.excerpt }}</p>
-
-                </a>
-
-            </article>
-
-            {% endif %}
-
-        {% endfor %}
-
+  <div class="related-header">
+    <div>
+      <div class="related-label">আরও লেখা</div>
+      <h2 class="related-title">আরও পড়ুন</h2>
     </div>
+    <a class="related-see-all" href="/archive/">সব লেখা →</a>
+  </div>
 
+  <div class="related-grid">
+    {% set ns = namespace(count=0) %}
+    {% for post in collections.latest | reverse %}
+      {% if post.url != page.url and ns.count < 3 %}
+        <article class="related-card {% if ns.count == 0 %}related-card--featured{% else %}related-card--small{% endif %}">
+          <a href="{{ post.url }}">
+            {% if post.data.feature %}
+              <img class="related-card-img" src="{{ post.data.feature }}" alt="{{ post.data.title }}">
+            {% else %}
+              <div class="related-card-img-placeholder">{{ post.data.category | first if post.data.category }}</div>
+            {% endif %}
+            <div class="related-card-type">{{ post.data.category }}</div>
+            <h3 class="related-card-title">{{ post.data.title }}</h3>
+            {% if ns.count == 0 and post.data.excerpt %}
+              <p class="related-card-excerpt">{{ post.data.excerpt }}</p>
+            {% endif %}
+            <div class="related-card-meta">
+              {{ post.date | bnDate }}
+              {% if post.data.readingTime %}&nbsp;·&nbsp; {{ post.data.readingTime }} মিনিট{% endif %}
+            </div>
+            <span class="related-card-arrow">→</span>
+          </a>
+        </article>
+        {% set ns.count = ns.count + 1 %}
+      {% endif %}
+    {% endfor %}
+  </div>
 </section>

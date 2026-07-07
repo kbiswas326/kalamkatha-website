@@ -204,3 +204,165 @@
     justify-content: flex-start;
   }
 }
+
+.related-posts {
+  max-width: 860px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+.related-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.related-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.related-title {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.related-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 32px; height: 2px;
+  background: var(--gold);
+}
+
+.related-see-all {
+  font-size: 0.8rem;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.related-see-all:hover { border-color: var(--gold); }
+
+.related-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1px;
+  background: var(--parchment-deep);
+  border: 1px solid var(--parchment-deep);
+}
+
+.related-card {
+  background: var(--parchment);
+  position: relative;
+  transition: background 0.2s;
+}
+
+.related-card a {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.related-card:hover { background: #fff; }
+.related-card:hover .related-card-arrow { opacity: 1; transform: translateX(0); }
+.related-card:hover .related-card-title { color: var(--gold); }
+
+.related-card--featured { grid-row: 1 / 3; }
+
+.related-card-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.related-card--small .related-card-img { aspect-ratio: 3/2; }
+
+.related-card-img-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--parchment-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 2rem;
+  color: rgba(184,134,11,0.15);
+}
+
+.related-card--small .related-card-img-placeholder { aspect-ratio: 3/2; }
+
+.related-card-type {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.related-card-title {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 0.6rem;
+  transition: color 0.2s;
+}
+
+.related-card--featured .related-card-title { font-size: 1.25rem; }
+
+.related-card-excerpt {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.related-card--small .related-card-excerpt { display: none; }
+
+.related-card-meta {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--parchment-deep);
+}
+
+.related-card-arrow {
+  position: absolute;
+  bottom: 1.5rem; right: 1.5rem;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.2s;
+}
+
+@media (max-width: 640px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .related-card--featured { grid-row: auto; }
+}
