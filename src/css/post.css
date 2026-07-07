@@ -161,6 +161,7 @@ font-size:.75rem;
 
 max-width:820px;
 margin:0 auto;
+padding:0 1.5rem;
 
 font-size:1.15rem;
 line-height:2.15;
@@ -168,31 +169,12 @@ color:var(--ink-soft);
 
 }
 
-
-
 .post-content p{
 
-margin-bottom:1.6rem;
+max-width:38em;
+margin:0 auto 2rem;
 
-text-align:justify;
-
-}
-
-
-
-.post-content p:first-of-type::first-letter{
-
-font-family:'Noto Serif Bengali',serif;
-
-font-size:4rem;
-
-float:left;
-
-line-height:1;
-
-margin-right:.5rem;
-
-color:var(--gold);
+text-align:left;
 
 }
 
@@ -274,21 +256,15 @@ border-radius:12px;
 
 .post-content{
 
-font-size:1.05rem;
-line-height:2;
+max-width:100%;
+padding:0 1.75rem;
+
 
 }
 
 .post-content p{
 
-text-align:left;
-margin-bottom:1.5rem;
-
-}
-
-.post-content p:first-of-type::first-letter{
-
-font-size:3rem;
+max-width:100%;
 
 }
 
@@ -328,35 +304,5 @@ transition:.25s;
 
 color:var(--ink);
 text-decoration:underline;
-
-}
-
-.post-back{
-
-max-width:760px;
-margin:2rem auto 1rem;
-padding:0 1.5rem;
-
-}
-
-.post-back a{
-
-color:var(--ink-muted);
-text-decoration:none;
-font-size:.95rem;
-transition:.25s;
-
-}
-
-.post-back a:hover{
-
-color:var(--gold);
-
-}
-
-.post-back{
-
-margin:1.25rem auto .75rem;
-padding:0 1.25rem;
 
 }
