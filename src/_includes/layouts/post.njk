@@ -12,6 +12,10 @@ layout: base.njk
   "বই": "/books/"
 } %}
 
+<nav class="post-back">
+    <a href="/archive/">← সমস্ত লেখা</a>
+</nav>
+
 <section class="post-hero">
 
     {% if category %}
@@ -34,7 +38,7 @@ layout: base.njk
 
     <div class="post-meta">
 
-        <span> {{ date | bnDate }}</span>
+        <span>{{ date | bnDate }}</span>
 
         {% if readingTime %}
         <span>•</span>
@@ -80,26 +84,16 @@ layout: base.njk
 
 {% if tags %}
 <div class="post-tags">
-
     {% for tag in tags %}
         <span class="tag">{{ tag }}</span>
     {% endfor %}
-
 </div>
 {% endif %}
 
 <article class="post-content">
-
     {{ content | safe }}
-
 </article>
 
 <div class="post-divider">
     <span>❦</span>
 </div>
-
-<nav class="post-navigation">
-    <a href="/archive/">
-        ← সমস্ত লেখা
-    </a>
-</nav>
