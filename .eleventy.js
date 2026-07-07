@@ -68,6 +68,32 @@ eleventyConfig.addCollection("latest", function(collectionApi) {
       .reverse();
   });
 
+
+  // Bengali Date Filter
+const bengaliMonths = [
+  "জানুয়ারি",
+  "ফেব্রুয়ারি",
+  "মার্চ",
+  "এপ্রিল",
+  "মে",
+  "জুন",
+  "জুলাই",
+  "আগস্ট",
+  "সেপ্টেম্বর",
+  "অক্টোবর",
+  "নভেম্বর",
+  "ডিসেম্বর"
+];
+
+const bnNumbers = (value) =>
+  String(value).replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[d]);
+
+eleventyConfig.addFilter("bnDate", function(date) {
+  const d = new Date(date);
+
+  return `${bnNumbers(d.getDate())} ${bengaliMonths[d.getMonth()]} ${bnNumbers(d.getFullYear())}`;
+});
+
   return {
     dir: {
       input: "src",

@@ -568,3 +568,69 @@ a{
 main{
     flex:1;
 }
+
+/* ---------- Mobile Navigation ---------- */
+
+.nav-toggle{
+
+display:none;
+background:none;
+border:none;
+font-size:1.8rem;
+cursor:pointer;
+color:var(--ink);
+
+}
+
+@media (max-width:900px){
+
+nav{
+
+padding:1rem 1.25rem;
+align-items:center;
+
+}
+
+.nav-toggle{
+
+display:block;
+
+}
+
+.nav-links{
+
+display:none;
+position:absolute;
+top:72px;
+left:0;
+width:100%;
+background:var(--paper);
+padding:1rem 0;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+flex-direction:column;
+gap:0;
+
+}
+
+.nav-links.show{
+
+display:flex;
+
+}
+
+.nav-links li{
+
+list-style:none;
+width:100%;
+text-align:center;
+
+}
+
+.nav-links a{
+
+display:block;
+padding:.9rem 0;
+
+}
+
+}

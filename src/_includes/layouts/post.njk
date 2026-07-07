@@ -5,19 +5,14 @@ layout: base.njk
 <section class="post-hero">
 
     <div class="post-breadcrumb">
-        <a href="/">কলমকথা</a>
-
-        {% if category %}
-        <span>—</span>
-        <span>{{ category }}</span>
-        {% endif %}
-    </div>
+    <a href="/archive/">← সমস্ত লেখা</a>
+</div>
 
     {% if category %}
-    <div class="post-category">
-        {{ category }}
-    </div>
-    {% endif %}
+<div class="post-category">
+    {{ category }}
+</div>
+{% endif %}
 
     <h1 class="post-title">
         {{ title }}
@@ -32,7 +27,7 @@ layout: base.njk
     <div class="post-meta">
 
         <span>
-            📅 {{ date }}
+            📅 {{ date | bnDate }}
         </span>
 
         {% if readingTime %}
