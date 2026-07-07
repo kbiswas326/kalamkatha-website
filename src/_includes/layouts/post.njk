@@ -2,17 +2,25 @@
 layout: base.njk
 ---
 
+{% set categoryLinks = {
+  "ছোটগল্প": "/stories/",
+  "কবিতা": "/poems/",
+  "উপন্যাস": "/novels/",
+  "প্রবন্ধ": "/essays/",
+  "চিত্রনাট্য": "/screenplays/",
+  "অনুবাদ": "/translations/",
+  "বই": "/books/"
+} %}
+
 <section class="post-hero">
 
-    <div class="post-breadcrumb">
-    <a href="/archive/">← সমস্ত লেখা</a>
-</div>
-
     {% if category %}
-<div class="post-category">
-    {{ category }}
-</div>
-{% endif %}
+    <div class="post-category">
+        <a href="{{ categoryLinks[category] or '/archive/' }}">
+            {{ category }}
+        </a>
+    </div>
+    {% endif %}
 
     <h1 class="post-title">
         {{ title }}
@@ -26,9 +34,7 @@ layout: base.njk
 
     <div class="post-meta">
 
-        <span>
-            📅 {{ date | bnDate }}
-        </span>
+        <span> {{ date | bnDate }}</span>
 
         {% if readingTime %}
         <span>•</span>
@@ -44,147 +50,56 @@ layout: base.njk
 
 </section>
 
-
 <div class="post-divider">
-
     <span>❦</span>
-
 </div>
 
-
 {% if feature %}
-
 <figure class="post-feature">
-
     <div class="post-feature-image">
-
         <img src="{{ feature }}" alt="{{ title }}">
-
     </div>
-
 </figure>
 
 <div class="post-divider">
     <span>❧</span>
 </div>
-
 {% endif %}
 
 {% if cover %}
-
 <figure class="post-feature">
-
     <div class="post-feature-image">
-
         <img src="{{ cover }}" alt="{{ title }}">
-
     </div>
-
 </figure>
 
 <div class="post-divider">
     <span>❧</span>
 </div>
-
 {% endif %}
 
+{% if tags %}
+<div class="post-tags">
 
-
-<section class="post-main">
-
-    <aside class="post-sidebar">
-
-        <div class="sidebar-group">
-
-            <div class="sidebar-title">
-                লেখক
-            </div>
-
-            <strong>
-
-                {{ author or "কলমকথা" }}
-
-            </strong>
-
-        </div>
-
-        {% if category %}
-
-        <div class="sidebar-group">
-
-            <div class="sidebar-title">
-
-                বিভাগ
-
-            </div>
-
-            <strong>
-
-                {{ category }}
-
-            </strong>
-
-        </div>
-
-        {% endif %}
-
-
-        {% if tags %}
-
-        <div class="sidebar-group">
-
-            <div class="sidebar-title">
-
-                ট্যাগ
-
-            </div>
-
-            <div class="tag-list">
-
-                {% for tag in tags %}
-
-                <span class="tag">
-
-                    {{ tag }}
-
-                </span>
-
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        {% endif %}
-
-    </aside>
-
-
-
-    <article class="post-content">
-
-        {{ content | safe }}
-
-    </article>
-
-</section>
-
-
-
-<div class="post-divider">
-
-    <span>❦</span>
+    {% for tag in tags %}
+        <span class="tag">{{ tag }}</span>
+    {% endfor %}
 
 </div>
+{% endif %}
 
+<article class="post-content">
 
+    {{ content | safe }}
+
+</article>
+
+<div class="post-divider">
+    <span>❦</span>
+</div>
 
 <nav class="post-navigation">
-
     <a href="/archive/">
-
         ← সমস্ত লেখা
-
     </a>
-
 </nav>
