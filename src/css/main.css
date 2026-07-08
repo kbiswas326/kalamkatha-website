@@ -543,6 +543,7 @@ a{
   @media (max-width: 992px) {
     .hero {
       padding: 7rem 3rem 4rem;
+      background:var(--parchment);
     }
     .hero-blend-overlay {
       background: linear-gradient(
@@ -555,6 +556,7 @@ a{
     }
     .hero-image-full-bg img {
       object-position: center center;
+       display:none;
     }
   }
 
