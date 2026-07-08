@@ -36,7 +36,7 @@ collections:
     label: "✍️ ছোটগল্প"
     folder: "src/posts/stories"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     extension: "md"
     editor:
       preview: false
@@ -47,15 +47,16 @@ collections:
       - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
 
       - { label: "Title", name: "title", widget: "string" }
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Custom URL for this post. Use only English letters, numbers, and hyphens. Example: puratan-din"
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Only lowercase letters, numbers, and hyphens allowed"]
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
-
       - { label: "Feature Image", name: "feature", widget: "image", required: false }
-
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
-
       - { label: "Tags", name: "tags", widget: "list", required: false }
-
       - { label: "Body", name: "body", widget: "markdown" }
 
   # ----------------------------
@@ -65,7 +66,7 @@ collections:
     label: "📖 উপন্যাস"
     folder: "src/posts/novels"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     extension: "md"
 
     fields:
@@ -74,15 +75,16 @@ collections:
       - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
 
       - { label: "Title", name: "title", widget: "string" }
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Custom URL for this post. Use only English letters, numbers, and hyphens. Example: ek-jon-manush"
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Only lowercase letters, numbers, and hyphens allowed"]
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
-
       - { label: "Feature Image", name: "feature", widget: "image", required: false }
-
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
-
       - { label: "Tags", name: "tags", widget: "list", required: false }
-
       - { label: "Body", name: "body", widget: "markdown" }
 
   # ----------------------------
@@ -92,7 +94,7 @@ collections:
     label: "📝 কবিতা"
     folder: "src/posts/poems"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     extension: "md"
 
     fields:
@@ -101,15 +103,16 @@ collections:
       - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
 
       - { label: "Title", name: "title", widget: "string" }
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Custom URL for this post. Use only English letters, numbers, and hyphens. Example: nil-akash"
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Only lowercase letters, numbers, and hyphens allowed"]
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
-
       - { label: "Feature Image", name: "feature", widget: "image", required: false }
-
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
-
       - { label: "Tags", name: "tags", widget: "list", required: false }
-
       - { label: "Body", name: "body", widget: "markdown" }
 
   # ----------------------------
@@ -119,7 +122,7 @@ collections:
     label: "🎬 চিত্রনাট্য"
     folder: "src/posts/screenplays"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     extension: "md"
 
     fields:
@@ -128,15 +131,16 @@ collections:
       - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
 
       - { label: "Title", name: "title", widget: "string" }
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Custom URL for this post. Use only English letters, numbers, and hyphens. Example: prথom-chhobi"
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Only lowercase letters, numbers, and hyphens allowed"]
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
-
       - { label: "Feature Image", name: "feature", widget: "image", required: false }
-
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
-
       - { label: "Tags", name: "tags", widget: "list", required: false }
-
       - { label: "Body", name: "body", widget: "markdown" }
 
   # ----------------------------
@@ -146,7 +150,7 @@ collections:
     label: "📜 প্রবন্ধ"
     folder: "src/posts/essays"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     extension: "md"
 
     fields:
@@ -155,15 +159,16 @@ collections:
       - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
 
       - { label: "Title", name: "title", widget: "string" }
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Custom URL for this post. Use only English letters, numbers, and hyphens. Example: bangla-sahitya"
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Only lowercase letters, numbers, and hyphens allowed"]
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
-
       - { label: "Feature Image", name: "feature", widget: "image", media_folder: "posts", public_folder: "/images/posts", required: false }
-
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
-
       - { label: "Tags", name: "tags", widget: "list", required: false }
-
       - { label: "Body", name: "body", widget: "markdown" }
 
   # ----------------------------
@@ -173,7 +178,7 @@ collections:
     label: "📚 বই"
     folder: "src/posts/books"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     extension: "md"
 
     fields:
@@ -182,13 +187,14 @@ collections:
       - { label: "Author", name: "author", widget: "hidden", default: "বর্ণালী দেবনাথ" }
 
       - { label: "Title", name: "title", widget: "string" }
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Custom URL for this post. Use only English letters, numbers, and hyphens. Example: prথom-boi"
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Only lowercase letters, numbers, and hyphens allowed"]
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
-
       - { label: "Cover Image", name: "cover", widget: "image", media_folder: "books", public_folder: "/images/books", required: false }
-
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
-
       - { label: "Tags", name: "tags", widget: "list", required: false }
-
       - { label: "Body", name: "body", widget: "markdown" }
