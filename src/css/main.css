@@ -1,5 +1,4 @@
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --ink: #1a1208;
@@ -604,7 +603,7 @@ position:absolute;
 top:72px;
 left:0;
 width:100%;
-background:var(--paper);
+background:var(--parchment);
 padding:1rem 0;
 box-shadow:0 10px 30px rgba(0,0,0,.08);
 flex-direction:column;

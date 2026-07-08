@@ -70,8 +70,6 @@ layout: base.njk
 
 <div class="post-divider"><span>❦</span></div>
 
-{% set otherPosts = collections.latest | reverse | rejectattr("url", "equalto", page.url) | list %}
-
 <section class="related-posts">
   <div class="related-header">
     <div>
@@ -82,9 +80,11 @@ layout: base.njk
   </div>
 
   <div class="related-grid">
-    {% for post in otherPosts %}
-      {% if loop.index <= 3 %}
-        <article class="related-card {% if loop.index == 1 %}related-card--featured{% else %}related-card--small{% endif %}">
+    {% set relatedCount = 0 %}
+    {% for post in collections.latest %}
+      {% if post.url != page.url and relatedCount < 3 %}
+        {% set relatedCount = relatedCount + 1 %}
+        <article class="related-card {% if relatedCount == 1 %}related-card--featured{% else %}related-card--small{% endif %}">
           <a href="{{ post.url }}">
             {% if post.data.feature %}
               <img class="related-card-img" src="{{ post.data.feature }}" alt="{{ post.data.title }}">
@@ -97,7 +97,7 @@ layout: base.njk
             {% endif %}
             <div class="related-card-type">{{ post.data.category }}</div>
             <h3 class="related-card-title">{{ post.data.title }}</h3>
-            {% if loop.index == 1 and post.data.excerpt %}
+            {% if relatedCount == 1 and post.data.excerpt %}
               <p class="related-card-excerpt">{{ post.data.excerpt }}</p>
             {% endif %}
             <div class="related-card-meta">
