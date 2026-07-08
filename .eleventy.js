@@ -1,15 +1,13 @@
 module.exports = function(eleventyConfig) {
   
-  // THE SAFETY NET: Map the old layout name to the new Nunjucks file
   eleventyConfig.addLayoutAlias('base.html', 'base.njk');
   eleventyConfig.addLayoutAlias('layouts/base.html', 'base.njk');
 
-  // Your static asset copies
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/css");
 
-    eleventyConfig.addCollection("stories", function(collectionApi) {
+  eleventyConfig.addCollection("stories", function(collectionApi) {
     return collectionApi.getFilteredByGlob("./src/posts/stories/*.md");
   });
 
@@ -37,62 +35,46 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("./src/posts/books/*.md");
   });
 
-    // Featured posts (homepage)
   eleventyConfig.addCollection("featured", function(collectionApi) {
     return collectionApi
       .getAllSorted()
       .filter(item => item.data.featured);
   });
 
-  // Latest writings (excluding books)
-eleventyConfig.addCollection("latest", function(collectionApi) {
+  eleventyConfig.addCollection("latest", function(collectionApi) {
+    return collectionApi
+      .getAllSorted()
+      .filter(item => {
+        return (
+          item.inputPath.includes("/posts/") &&
+          !item.inputPath.includes("/posts/books/")
+        );
+      })
+      .reverse();
+  });
 
-  return collectionApi
-    .getAllSorted()
-    .filter(item => {
-
-      return (
-        item.inputPath.includes("/posts/") &&
-        !item.inputPath.includes("/posts/books/")
-      );
-
-    })
-    .reverse();
-
-});
-
-  // Latest books
   eleventyConfig.addCollection("latestBooks", function(collectionApi) {
     return collectionApi
       .getFilteredByGlob("./src/posts/books/*.md")
       .reverse();
   });
 
+  // Bengali Date Filter — null-safe
+  const bengaliMonths = [
+    "জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল",
+    "মে", "জুন", "জুলাই", "আগস্ট",
+    "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"
+  ];
 
-  // Bengali Date Filter
-const bengaliMonths = [
-  "জানুয়ারি",
-  "ফেব্রুয়ারি",
-  "মার্চ",
-  "এপ্রিল",
-  "মে",
-  "জুন",
-  "জুলাই",
-  "আগস্ট",
-  "সেপ্টেম্বর",
-  "অক্টোবর",
-  "নভেম্বর",
-  "ডিসেম্বর"
-];
+  const bnNumbers = (value) =>
+    String(value).replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[d]);
 
-const bnNumbers = (value) =>
-  String(value).replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[d]);
-
-eleventyConfig.addFilter("bnDate", function(date) {
-  const d = new Date(date);
-
-  return `${bnNumbers(d.getDate())} ${bengaliMonths[d.getMonth()]} ${bnNumbers(d.getFullYear())}`;
-});
+  eleventyConfig.addFilter("bnDate", function(date) {
+    if (!date) return '';
+    const d = new Date(date);
+    if (isNaN(d.getTime())) return '';
+    return `${bnNumbers(d.getDate())} ${bengaliMonths[d.getMonth()]} ${bnNumbers(d.getFullYear())}`;
+  });
 
   return {
     dir: {

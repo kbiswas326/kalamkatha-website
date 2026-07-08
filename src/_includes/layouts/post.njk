@@ -22,37 +22,21 @@ layout: base.njk
     </div>
     {% endif %}
 
-    <h1 class="post-title">
-        {{ title }}
-    </h1>
+    <h1 class="post-title">{{ title }}</h1>
 
     {% if subtitle %}
-    <p class="post-subtitle">
-        {{ subtitle }}
-    </p>
+    <p class="post-subtitle">{{ subtitle }}</p>
     {% endif %}
 
     <div class="post-meta">
-
-        <span>{{ date | bnDate }}</span>
-
-        {% if readingTime %}
-        <span>•</span>
-        <span>{{ readingTime }} মিনিট পড়তে</span>
-        {% endif %}
-
-        {% if author %}
-        <span>•</span>
-        <span>{{ author }}</span>
-        {% endif %}
-
+        {% if date %}<span>{{ date | bnDate }}</span>{% endif %}
+        {% if readingTime %}<span>•</span><span>{{ readingTime }} মিনিট পড়তে</span>{% endif %}
+        {% if author %}<span>•</span><span>{{ author }}</span>{% endif %}
     </div>
 
 </section>
 
-<div class="post-divider">
-    <span>❦</span>
-</div>
+<div class="post-divider"><span>❦</span></div>
 
 {% if feature %}
 <figure class="post-feature">
@@ -60,10 +44,7 @@ layout: base.njk
         <img src="{{ feature }}" alt="{{ title }}">
     </div>
 </figure>
-
-<div class="post-divider">
-    <span>❧</span>
-</div>
+<div class="post-divider"><span>❧</span></div>
 {% endif %}
 
 {% if cover %}
@@ -72,10 +53,7 @@ layout: base.njk
         <img src="{{ cover }}" alt="{{ title }}">
     </div>
 </figure>
-
-<div class="post-divider">
-    <span>❧</span>
-</div>
+<div class="post-divider"><span>❧</span></div>
 {% endif %}
 
 {% if tags %}
@@ -90,9 +68,9 @@ layout: base.njk
     {{ content | safe }}
 </article>
 
-<div class="post-divider">
-    <span>❦</span>
-</div>
+<div class="post-divider"><span>❦</span></div>
+
+{% set otherPosts = collections.latest | reverse | rejectattr("url", "equalto", page.url) | list %}
 
 <section class="related-posts">
   <div class="related-header">
@@ -104,29 +82,31 @@ layout: base.njk
   </div>
 
   <div class="related-grid">
-    {% set ns = namespace(count=0) %}
-    {% for post in collections.latest | reverse %}
-      {% if post.url != page.url and ns.count < 3 %}
-        <article class="related-card {% if ns.count == 0 %}related-card--featured{% else %}related-card--small{% endif %}">
+    {% for post in otherPosts %}
+      {% if loop.index <= 3 %}
+        <article class="related-card {% if loop.index == 1 %}related-card--featured{% else %}related-card--small{% endif %}">
           <a href="{{ post.url }}">
             {% if post.data.feature %}
               <img class="related-card-img" src="{{ post.data.feature }}" alt="{{ post.data.title }}">
+            {% elif post.data.cover %}
+              <img class="related-card-img" src="{{ post.data.cover }}" alt="{{ post.data.title }}">
             {% else %}
-              <div class="related-card-img-placeholder">{{ post.data.category | first if post.data.category }}</div>
+              <div class="related-card-img-placeholder">
+                {% if post.data.category %}{{ post.data.category | truncate(2, true, '') }}{% endif %}
+              </div>
             {% endif %}
             <div class="related-card-type">{{ post.data.category }}</div>
             <h3 class="related-card-title">{{ post.data.title }}</h3>
-            {% if ns.count == 0 and post.data.excerpt %}
+            {% if loop.index == 1 and post.data.excerpt %}
               <p class="related-card-excerpt">{{ post.data.excerpt }}</p>
             {% endif %}
             <div class="related-card-meta">
-              {{ post.date | bnDate }}
+              {% if post.date %}{{ post.date | bnDate }}{% endif %}
               {% if post.data.readingTime %}&nbsp;·&nbsp; {{ post.data.readingTime }} মিনিট{% endif %}
             </div>
             <span class="related-card-arrow">→</span>
           </a>
         </article>
-        {% set ns.count = ns.count + 1 %}
       {% endif %}
     {% endfor %}
   </div>
