@@ -366,3 +366,29 @@
   }
   .related-card--featured { grid-row: auto; }
 }
+/* ── Post excerpt (shown below title in hero) ── */
+.post-excerpt {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  font-style: italic;
+}
+
+/* ── Author avatar inline in meta ── */
+.post-meta-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.post-meta-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--parchment-deep);
+  vertical-align: middle;
+  flex-shrink: 0;
+}

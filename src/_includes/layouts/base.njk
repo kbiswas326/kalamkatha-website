@@ -3,22 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ title | default(site.name) }}</title>
+
+{# ── PAGE TITLE ── #}
+{% if category and author %}
+  <title>{{ title }} — বাংলা {{ category }} — লেখিকা {{ author }} | {{ site.name }}</title>
+{% elif category %}
+  <title>{{ title }} — বাংলা {{ category }} | {{ site.name }}</title>
+{% elif title and title != site.tagline %}
+  <title>{{ site.name }} — {{ title }}</title>
+{% else %}
+  <title>{{ site.name }} — {{ site.tagline }} — {{ site.author.name }}</title>
+{% endif %}
+
+{# ── META DESCRIPTION ── #}
+{% if excerpt %}
+  <meta name="description" content="{{ excerpt }}">
+{% elif subtitle %}
+  <meta name="description" content="{{ subtitle }}">
+{% else %}
+  <meta name="description" content="{{ site.tagline }} — {{ site.author.name }}">
+{% endif %}
+
+{# ── CANONICAL ── #}
+<link rel="canonical" href="https://kalamkatha-website.pages.dev{{ page.url }}">
+
+{# ── OPEN GRAPH ── #}
+<meta property="og:type" content="{% if category %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.name }}">
+{% if category and author %}
+  <meta property="og:title" content="{{ title }} — {{ category }} — লেখিকা {{ author }}">
+{% elif category %}
+  <meta property="og:title" content="{{ title }} — {{ category }} | {{ site.name }}">
+{% else %}
+  <meta property="og:title" content="{{ site.name }} — {{ site.tagline }}">
+{% endif %}
+{% if excerpt %}
+  <meta property="og:description" content="{{ excerpt }}">
+{% elif subtitle %}
+  <meta property="og:description" content="{{ subtitle }}">
+{% else %}
+  <meta property="og:description" content="{{ site.tagline }} — {{ site.author.name }}">
+{% endif %}
+{% if feature %}
+  <meta property="og:image" content="https://kalamkatha-website.pages.dev{{ feature }}">
+{% elif cover %}
+  <meta property="og:image" content="https://kalamkatha-website.pages.dev{{ cover }}">
+{% elif site.author.portraitImage %}
+  <meta property="og:image" content="https://kalamkatha-website.pages.dev{{ site.author.portraitImage }}">
+{% endif %}
+
+{# ── ARTICLE META (posts only) ── #}
+{% if category %}
+  {% if date %}<meta property="article:published_time" content="{{ date | iso }}">{% endif %}
+  {% if author %}<meta property="article:author" content="{{ author }}">{% endif %}
+  <meta property="article:section" content="{{ category }}">
+{% endif %}
+
+{# ── TWITTER CARD ── #}
+<meta name="twitter:card" content="summary_large_image">
+{% if feature or cover %}
+  <meta name="twitter:image" content="https://kalamkatha-website.pages.dev{{ feature or cover }}">
+{% endif %}
+
+{# ── AUTHOR ── #}
+<meta name="author" content="{{ author or site.author.name }}">
+
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600&family=Noto+Serif+Bengali:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/post.css">
 </head>
 <body class="site-body">
 <nav>
-
   <a href="/" class="nav-logo">
     কলম<span>কথা</span>
   </a>
-
-  <button class="nav-toggle" onclick="toggleMenu()">
-    ☰
-  </button>
-
+  <button class="nav-toggle" onclick="toggleMenu()">☰</button>
   <ul class="nav-links" id="navMenu">
     <li><a href="/archive/">লেখালেখি</a></li>
     <li><a href="/books/">বই</a></li>
@@ -26,53 +85,38 @@
     <li><a href="/#about">পরিচয়</a></li>
     <li><a href="/#contact">যোগাযোগ</a></li>
   </ul>
-
 </nav>
 
 <main>
-
 {{ content | safe }}
-
 </main>
 
 <footer>
   <div class="footer-logo">
     <a href="/">কলম<span>কথা</span></a>
   </div>
-
   <div class="footer-links">
     <a href="/archive/">লেখালেখি</a>
     <a href="/books/">বই</a>
     <a href="/screenplays/">চলচ্চিত্র</a>
     <a href="/#about">পরিচয়</a>
   </div>
-
   <div class="footer-copy">
     © ২০২৬ কলমকথা। সর্বস্বত্ব সংরক্ষিত।
   </div>
 </footer>
 
 <script>
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-}
-</script>
-
-<script>
 function toggleMenu() {
   document.getElementById("navMenu").classList.toggle("show");
 }
-
 function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
 }
 </script>
-
 </body>
 </html>

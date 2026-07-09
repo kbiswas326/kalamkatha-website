@@ -28,10 +28,21 @@ layout: base.njk
     <p class="post-subtitle">{{ subtitle }}</p>
     {% endif %}
 
+    {% if excerpt %}
+    <p class="post-excerpt">{{ excerpt }}</p>
+    {% endif %}
+
     <div class="post-meta">
         {% if date %}<span>{{ date | bnDate }}</span>{% endif %}
-        {% if readingTime %}<span>•</span><span>{{ readingTime }} মিনিট পড়তে</span>{% endif %}
-        {% if author %}<span>•</span><span>{{ author }}</span>{% endif %}
+        {% if author %}
+        <span>•</span>
+        <span class="post-meta-author">
+            {% if site.author.portraitImage %}
+            <img class="post-meta-avatar" src="{{ site.author.portraitImage }}" alt="{{ author }}">
+            {% endif %}
+            {{ author }}
+        </span>
+        {% endif %}
     </div>
 
 </section>

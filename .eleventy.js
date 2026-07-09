@@ -69,6 +69,11 @@ module.exports = function(eleventyConfig) {
   const bnNumbers = (value) =>
     String(value).replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[d]);
 
+  eleventyConfig.addFilter("iso", function(date) {
+    if (!date) return '';
+    return new Date(date).toISOString();
+  });
+
   eleventyConfig.addFilter("bnDate", function(date) {
     if (!date) return '';
     const d = new Date(date);
