@@ -3,6 +3,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addLayoutAlias('base.html', 'base.njk');
   eleventyConfig.addLayoutAlias('layouts/base.html', 'base.njk');
 
+  eleventyConfig.addPassthroughCopy("src/favicon.ico");
+  eleventyConfig.addPassthroughCopy("src/favicon.svg");
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/css");
